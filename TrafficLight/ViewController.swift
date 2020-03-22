@@ -20,14 +20,33 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         trafficLight.isHidden = false
+        
         redSignal.alpha = 0.3
         yellowSignal.alpha = 0.3
         greenSignal.alpha = 0.3
+        
         redSignal.layer.cornerRadius = 64
         yellowSignal.layer.cornerRadius = 64
         greenSignal.layer.cornerRadius = 64
+        
+        startButton.layer.cornerRadius = 10
     }
 
-
+   
+    @IBAction func changeColor() {
+        
+        if redSignal.alpha == 1 {
+            redSignal.alpha = 0.3
+            yellowSignal.alpha = 1
+        } else if yellowSignal.alpha == 1 {
+            greenSignal.alpha = 1
+            yellowSignal.alpha = 0.3
+        } else {
+            greenSignal.alpha = 0.3
+            redSignal.alpha = 1
+        }
+        startButton.setTitle("NEXT", for: .normal)
+    }
+    
 }
 
